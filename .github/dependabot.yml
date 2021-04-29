@@ -1,0 +1,40 @@
+version: 2
+registries:
+  git-github-io:
+    type: git
+    url: https://github.io
+    username: jpelaezClub
+    password: "${{secrets.GIT_GITHUB_IO_PASSWORD}}"
+  git-wordpress-com:
+    type: git
+    url: https://wordpress.com
+    username: jpelaezblog01
+    password: "${{secrets.GIT_WORDPRESS_COM_PASSWORD}}"
+
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "03:00"
+    timezone: Asia/Singapore
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: rubocop
+    versions:
+    - 1.10.0
+    - 1.11.0
+    - 1.12.0
+    - 1.12.1
+    - 1.9.0
+    - 1.9.1
+  - dependency-name: fastimage
+    versions:
+    - 2.2.1
+    - 2.2.2
+  - dependency-name: minitest
+    versions:
+    - 5.14.3
+  registries:
+  - git-github-io
+  - git-wordpress-com
